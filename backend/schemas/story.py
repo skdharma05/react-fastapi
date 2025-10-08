@@ -3,7 +3,7 @@ from typing import List,Dict,Optional
 from datetime import datetime
 
 
-class StoryOptionalSchema(BaseModel):
+class StoryOptionsSchema(BaseModel):
     text:str
     node_id = Optional[int] = None
 
@@ -14,7 +14,7 @@ class StoryNodeBase(BaseModel):
 
 class CompleteStoryNodeResponse(StoryNodeBase):
     id: int
-    options: List[StoryOptionalSchema] = []
+    options: List[StoryOptionsSchema] = []
 
     class Config:
         from_attributes = True
@@ -25,6 +25,10 @@ class StoryBase(BaseModel):
 
     class Config:
         from_attributes = True
+
+class CreateStoryRequest(BaseModel):
+    theme:str
+    
 
 class CompleteStoryResponse(StoryBase):
     id: int
